@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spaceX"
+version = "2025.03.10"
+dependencies = [
+    "torch",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "pytest",
+    "pytest-watch",
+    "torchvision",
+    "scikit-learn"
+]
+authors = [
+    {name = "Caleb Vourazeris", email = "calebvourazeris@gmail.com"}
+]
+description = "SpaceX Interview Code Examples"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]

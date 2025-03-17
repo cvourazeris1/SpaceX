@@ -1,0 +1,13 @@
+pyproject.toml
+neural_network/evaluate_model.py
+neural_network/graphs.py
+neural_network/load_data.py
+neural_network/main.py
+neural_network/models.py
+neural_network/test_sample.py
+neural_network/training_loop.py
+spaceX.egg-info/PKG-INFO
+spaceX.egg-info/SOURCES.txt
+spaceX.egg-info/dependency_links.txt
+spaceX.egg-info/requires.txt
+spaceX.egg-info/top_level.txt

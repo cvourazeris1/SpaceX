@@ -1,0 +1,13 @@
+Metadata-Version: 2.2
+Name: spaceX
+Version: 2025.3.10
+Summary: SpaceX Interview Code Examples
+Author-email: Caleb Vourazeris <calebvourazeris@gmail.com>
+Requires-Dist: torch
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: pytest
+Requires-Dist: pytest-watch
+Requires-Dist: torchvision
+Requires-Dist: scikit-learn
