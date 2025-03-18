@@ -1,31 +1,32 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import Dataset, DataLoader
 import torch
 
 
-class IrisDataset(Dataset):
+# Creates a custom dataset class that reads in a dataframe
+class IrisDataset(Dataset):                                 
     def __init__(self, dataframe):
-        dataframe = self.label_change(dataframe)
-        self.features = dataframe.drop('variety', axis=1)
-        self.labels = dataframe['variety']
-        self.tensor_transform()
+        dataframe = self.label_change(dataframe)                                # encodes categorical words to numbers
+        self.features = dataframe.drop(['variety', 'variety_encoded'], axis=1)  # drops label data and saves numerical features
+        self.labels = dataframe['variety_encoded']                              # assigns labels to encodings
+        self.tensor_transform()                                                 # changes numerical data to tensors
 
     def __len__(self):
-        return len(self.labels)
+        return len(self.labels)                                                 # returns length of labels
     
-    def __getitem__(self, idx):
-        features = self.features[idx]
+    def __getitem__(self, idx):                                                 # defines how data is pulled from dataset 
+        features = self.features[idx]                                                  
         labels = self.labels[idx]
         return features, labels
     
-    def label_change(self, dataframe):
-        dataframe['variety'] = dataframe['variety'].replace('Setosa', 0)
-        dataframe['variety'] = dataframe['variety'].replace('Versicolor', 1)
-        dataframe['variety'] = dataframe['variety'].replace('Virginica', 2)
+    def label_change(self, dataframe):                                          # changes labels to encodings
+        label_encoder = LabelEncoder()
+        dataframe['variety_encoded'] = label_encoder.fit_transform(dataframe['variety'])
         return dataframe
 
-    def tensor_transform(self):
+    def tensor_transform(self):                                                 # changes data to tensors
         self.features = torch.FloatTensor(self.features.values)
         self.labels = torch.LongTensor(self.labels.values)
 
